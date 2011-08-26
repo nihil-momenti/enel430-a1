@@ -1,9 +1,9 @@
 function [C, b] = identify(y, t, w)
   K_p = 60;
 
-  M = [cos(w * t)' sin(w * t)'];
+  M = [cos(w * t) sin(w * t)];
 
-  result = (M' * M) \ (M' * y');
+  result = (M' * M) \ (M' * y);
   A_1 = result(1);
   A_2 = result(2);
 

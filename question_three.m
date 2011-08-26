@@ -10,7 +10,7 @@ f = 1.8;
 w = 2 * pi * f;
 t_end = 1;
 
-noise_levels = 0.00 : 0.01 : 0.40;
+noise_levels = 0.00 : 0.05 : 0.40;
 trials = 100;
 
 % Calculations
@@ -30,7 +30,7 @@ errors = 1.65 * std(results) / sqrt(trials);
 
 % Output
 headings = {'Noise Level', 'Median (C)', '90% CI (C)', 'Median (b)', '90% CI (b)'};
-formats  = {'%4.2f', '%7.5f', '%7.5f', '%7.5f', '%7.5f'};
+formats = {'%4.2f', '%7.5f', '%7.5f', '%7.5f', '%7.5f'};
 table = [noise_levels', medians(1,:,1)', errors(1,:,1)', medians(1,:,2)', errors(1,:,2)'];
 
 fprintf('Question Three:\n');
@@ -40,13 +40,13 @@ figure(2);
 clf reset;
 
 subplot(2,1,1);
-errorbar(noise_levels, means(:,:,1), errors(:,:,1), 'O');
+errorbar(noise_levels, means(:,:,1), errors(:,:,1), 'X');
 hold on
-plot(noise_levels, medians(:,:,1), 'X');
+plot(noise_levels, medians(:,:,1), 'O');
 hold off
 
 subplot(2,1,2);
-errorbar(noise_levels, means(:,:,2), errors(:,:,2), 'O');
+errorbar(noise_levels, means(:,:,2), errors(:,:,2), 'X');
 hold on
-plot(noise_levels, medians(:,:,2), 'X');
+plot(noise_levels, medians(:,:,2), 'O');
 hold off
