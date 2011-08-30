@@ -19,7 +19,12 @@ figure(1);
 
 subplot(2,1,1);
 plot(t1, y1, t2, y2);
+legend('Model', 'Simulation');
+xlabel('Time (s)');
+ylabel('y');
 
 subplot(2,1,2);
 plot(t1, abs(y1-y2));
+xlabel('Time (s)');
+ylabel('Difference between Model y and Simulated y');
 

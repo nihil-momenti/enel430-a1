@@ -44,9 +44,14 @@ errorbar(noise_levels, means(:,:,1), errors(:,:,1), 'X');
 hold on
 plot(noise_levels, medians(:,:,1), 'O');
 hold off
+xlabel('Standard deviation of noise level')
+ylabel('C value, X - mean, O - median');
+
 
 subplot(2,1,2);
 errorbar(noise_levels, means(:,:,2), errors(:,:,2), 'X');
 hold on
 plot(noise_levels, medians(:,:,2), 'O');
 hold off
+xlabel('Standard deviation of noise level')
+ylabel('b value, X - mean, O - median');

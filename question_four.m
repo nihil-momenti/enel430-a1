@@ -54,6 +54,10 @@ fprintf('    90%% CI    : %7.5f\n', total_CI);
 
 figure(4);
 errorbar(w, mean_error, error_bars, 'X');
+xlabel('Frequency (radians per second)');
+ylabel('Error in predicted cart values');
 
 figure(5);
 hist(total_errors, 1000);
+ylabel('Count');
+xlabel('Error in predicted cart values');
