@@ -36,8 +36,8 @@ A_m = abs(rsps);
 O_m = 180 * angle(rsps) / pi;
 A_db_m = 20 * log10(A_m);
 
-error_A = 100 * abs((A - A_m) / mean(A_m));
-error_O = 100 * abs((O - O_m) / mean(O_m));
+error_A = abs((A - A_m) / mean(A_m));
+error_O = abs((O - O_m) / mean(O_m));
 
 for i = 1:12
   resps = freqresp(G(i), w);
@@ -54,28 +54,27 @@ end
 
 % Output
 figure(6);
-subplot(2,1,1);
+subplot(2,2,1);
 semilogx(w, A_db, w, A_db_m);
 xlabel('Frequency (radians per second)');
 ylabel('Response Magnitude (dB)');
 legend('Measured', 'Model');
 axis tight;
 
-subplot(2,1,2);
+subplot(2,2,2);
 semilogx(w, error_A);
 xlabel('Frequency (radians per second)');
 ylabel('Relative Error in Response Magnitude');
 axis tight;
 
-figure(7);
-subplot(2,1,1);
+subplot(2,2,3);
 semilogx(w, O, w, O_m);
 xlabel('Frequency (radians per second)');
 ylabel('Response Phase (degrees)');
 legend('Measured', 'Model');
 axis tight;
 
-subplot(2,1,2);
+subplot(2,2,4);
 semilogx(w, error_O);
 xlabel('Frequency (radians per second)');
 ylabel('Relative Error in Response Phase');
@@ -96,15 +95,14 @@ ylabel('Relative Error in Response Magnitude');
 legend('Model 1 (0.6 Hz)', 'Model 2 (0.8 Hz)', 'Model 3 (1.0 Hz)', 'Model 4 (1.2 Hz)', 'Model 5 (1.4 Hz)', 'Model 6 (1.6 Hz)', 'Model 7 (1.8 Hz)', 'Model 8 (2.0 Hz)', 'Model 9 (2.2 Hz)', 'Model 10 (2.4 Hz)', 'Model 11 (2.6 Hz)', 'Model 12 (2.8 Hz)');
 axis tight;
 
-figure(9);
-subplot(2,1,1);
+subplot(2,2,3);
 semilogx(w, O_b(:,1), w, O_b(:,2), w, O_b(:,3), w, O_b(:,4), w, O_b(:,5), w, O_b(:,6), w, O_b(:,7), w, O_b(:,8), w, O_b(:,9), w, O_b(:,10), w, O_b(:,11), w, O_b(:,12), w, O);
 xlabel('Frequency (radians per second)');
 ylabel('Response Phase (degrees)');
 legend('Model 1 (0.6 Hz)', 'Model 2 (0.8 Hz)', 'Model 3 (1.0 Hz)', 'Model 4 (1.2 Hz)', 'Model 5 (1.4 Hz)', 'Model 6 (1.6 Hz)', 'Model 7 (1.8 Hz)', 'Model 8 (2.0 Hz)', 'Model 9 (2.2 Hz)', 'Model 10 (2.4 Hz)', 'Model 11 (2.6 Hz)', 'Model 12 (2.8 Hz)', 'Measured');
 axis tight;
 
-subplot(2,1,2);
+subplot(2,2,4);
 semilogx(w, error_O_b(:,1), w, error_O_b(:,2), w, error_O_b(:,3), w, error_O_b(:,4), w, error_O_b(:,5), w, error_O_b(:,6), w, error_O_b(:,7), w, error_O_b(:,8), w, error_O_b(:,9), w, error_O_b(:,10), w, error_O_b(:,11), w, error_O_b(:,12));
 xlabel('Frequency (radians per second)');
 ylabel('Relative Error in Response Phase');
@@ -119,7 +117,7 @@ legend('C', 'b');
 axis tight;
 
 figure(11);
-semilogx(w, integrated_error_A, w, integrated_error_O);
+semilogx(w, integrated_error_A, w, integrated_error_O, 'x');
 xlabel('Frequency (radians per second)');
 ylabel('Integrated Error');
 legend('Magnitude', 'Phase');

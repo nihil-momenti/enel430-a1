@@ -7,16 +7,8 @@ characterisation simply involved taking in the provided datasets and running the
 through the identification function.  This resulted in a $C$ and $b$ value for
 each frequency at which the system was tested.  As instructed the values derived
 from the seventh data set with a frequency of 1.8 Hz was used as the general
-model.  The results of this identification are shown in Equation
-\eqref{identified}.
-
-\begin{equation}\label{identified}
-\begin{aligned}
-  C     &= 5.83523 \\
-  \beta &= 1.93596
-\end{aligned}
-\end{equation}
-
+model.  The results of this identification were a $C$ value of $5.83523$ and a
+$\beta$ vale of $1.93596$.
 
 \subheading{Wherein the Identification is Ridiculed}
 \section*{Section Four (b)}
@@ -31,7 +23,7 @@ finally finding the median and 90\% confidence interval of the relative error.
 Figure \ref{4b-fig} and Table \ref{4b} shows these medians and the 90\%
 confidence interval found.  Obviously the model is most accurate at the
 frequency it was derived from, the relative error is down to 0--6\% showing the
-very good accuracy.  The worst case is at $\omega = 16.3$ with a 90\% CI of the
+very good accuracy.  The worst case is at $f = 2.6$, $\omega = 16.3$ with a 90\% CI of the
 error in the range 0--63\%, this is obviously an unacceptable level of error so
 the model is really only valid for the one frequency it was derived for, and
 maybe the ones either side depending on the use case.
@@ -47,24 +39,24 @@ Figure \ref{4b-2-fig} shows a histogram of the error values.  Looking at this
 the bell shape of a Gaussian distribution can be easily seen.
 
 \begin{table}
-\centering
-\begin{tabular}{c|c|c}
-Frequency & Relative Median error & 90\% CI \\
-\hline
-0.6 & 0.26936 & 0.26175 \\
-0.8 & 0.30116 & 0.25065 \\
-1.0 & 0.32473 & 0.24677 \\
-1.2 & 0.31176 & 0.23621 \\
-1.4 & 0.24266 & 0.20618 \\
-1.6 & 0.11872 & 0.12534 \\
-1.8 & 0.02376 & 0.03305 \\
-2.0 & 0.11852 & 0.13654 \\
-2.2 & 0.18552 & 0.21159 \\
-2.4 & 0.22813 & 0.21008 \\
-2.6 & 0.28859 & 0.32453 \\
-2.8 & 0.28994 & 0.28366 
-\end{tabular}
-\caption{Error in the derived model\label{4b}}
+    \centering
+    \begin{tabular}{c|c|c}
+        Frequency & Relative Median error & 90\% CI \\
+        \hline
+        0.6 & 0.26936 & 0.26175 \\
+        0.8 & 0.30116 & 0.25065 \\
+        1.0 & 0.32473 & 0.24677 \\
+        1.2 & 0.31176 & 0.23621 \\
+        1.4 & 0.24266 & 0.20618 \\
+        1.6 & 0.11872 & 0.12534 \\
+        1.8 & 0.02376 & 0.03305 \\
+        2.0 & 0.11852 & 0.13654 \\
+        2.2 & 0.18552 & 0.21159 \\
+        2.4 & 0.22813 & 0.21008 \\
+        2.6 & 0.28859 & 0.32453 \\
+        2.8 & 0.28994 & 0.28366 
+    \end{tabular}
+    \caption{Error in the derived model\label{4b}}
 \end{table}
 
 \includefigure{width=0.8\textwidth}
@@ -74,28 +66,3 @@ Frequency & Relative Median error & 90\% CI \\
 \includefigure{width=0.8\textwidth}
               {images/section-4b-2}
               {\label{4b-2-fig}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
