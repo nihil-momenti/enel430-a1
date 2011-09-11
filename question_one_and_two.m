@@ -16,6 +16,7 @@ t_end = 3;
 
 % Output
 figure(1);
+title('lol');
 
 subplot(2,1,1);
 plot(t1, y1, t2, y2);

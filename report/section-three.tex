@@ -20,11 +20,14 @@ calculated.
 
 Table \ref{3b} and Figure \ref{3b-fig} show the median and confidence interval
 calculated using the test function with $C = 5$, $\beta = 1$, $K_p = 60$, $f =
-1.8$, $t_\text{end} = 1$ and a varying standard deviation.
+1.8$, $t_\text{end} = 1$ and a varying standard deviation.  From these we can
+see that the identification of the $C$ and $\beta$ values are quite accurate,
+the 90\% confidence interval is less than 0.3\% of the found value and the
+difference from the correct value is less than 0.2\% in the worst case.
 
 \begin{table}
 \centering
-\begin{tabular}{r|r|r|r|r}
+\begin{tabular}{c|c|c|c|c}
 Noise Level & Median (C) & 90\% CI (C) & Median (b) & 90\% CI (b) \\
 \hline
 0.00 & 5.00000 & 0.00000 & 1.00000 & 0.00000 \\
@@ -43,4 +46,5 @@ Noise Level & Median (C) & 90\% CI (C) & Median (b) & 90\% CI (b) \\
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{images/section-3b}
+\caption{Testing the Identification Function\label{3b-fig}}
 \end{figure}

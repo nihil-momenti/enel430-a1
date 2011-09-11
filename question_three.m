@@ -29,9 +29,9 @@ medians = median(results);
 errors = 1.65 * std(results) / sqrt(trials);
 
 % Output
-headings = {'Noise Level', 'Median (C)', '90% CI (C)', 'Median (b)', '90% CI (b)'};
-formats = {'%4.2f', '%7.5f', '%7.5f', '%7.5f', '%7.5f'};
-table = [noise_levels', medians(1,:,1)', errors(1,:,1)', medians(1,:,2)', errors(1,:,2)'];
+headings = {'Noise Level', 'Median (C)', '90% CI (C)', 'CI/mean', 'Median (b)', '90% CI (b)', 'CI/mean'};
+formats = {'%4.2f', '%7.5f', '%7.5f', '%7.5f', '%7.5f', '%7.5f', '%7.5f'};
+table = [noise_levels', medians(1,:,1)', errors(1,:,1)', 100 * errors(1,:,1)' ./ means(1,:,1)', medians(1,:,2)', errors(1,:,2)', 100 * errors(1,:,2)' ./ means(1,:,2)'];
 
 fprintf('Question Three:\n');
 print_table(headings, formats, table);

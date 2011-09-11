@@ -16,12 +16,17 @@ end
 % Calculations
 [C, b] = identify(y{7}, t{7}, w(7));
 
+fprintf('Question four:\n');
+fprintf('Identified cart values:\n');
+fprintf('    C: %7.5f\n', C);
+fprintf('    b: %7.5f\n\n', b);
+
 for i = 1:12
   [y_m{i}, t_m{i}] = y_model(C, b, w(i), max(t{i}));
   scaled_errors{i} = abs(y_m{i} - y{i}) / mean(abs(y{i}));
   mean_error(i) = mean(scaled_errors{i});
   median_error(i) = median(scaled_errors{i});
-  error_bars(i) = 1.65 * std(scaled_errors{i}) / sqrt(length(scaled_errors{i}));
+  error_bars(i) = 1.65 * std(scaled_errors{i}) / sqrt(2 * max(t{i}) * f(i));
 end
 
 total_errors = [scaled_errors{1};  scaled_errors{2};  scaled_errors{3};
