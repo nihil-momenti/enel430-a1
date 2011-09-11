@@ -24,10 +24,10 @@ for i = 1:12
   error_bars(i) = 1.65 * std(scaled_errors{i}) / sqrt(length(scaled_errors{i}));
 end
 
-total_errors = [scaled_errors{1};scaled_errors{2};scaled_errors{3};
-                scaled_errors{4};scaled_errors{5};scaled_errors{6};
-                scaled_errors{7};scaled_errors{8};scaled_errors{9};
-                scaled_errors{10};scaled_errors{11};scaled_errors{12};];
+total_errors = [scaled_errors{1};  scaled_errors{2};  scaled_errors{3};
+                scaled_errors{4};  scaled_errors{5};  scaled_errors{6};
+                scaled_errors{7};  scaled_errors{8};  scaled_errors{9};
+                scaled_errors{10}; scaled_errors{11}; scaled_errors{12};];
 
 total_mean_error = mean(total_errors);
 total_CI = 1.65 * std(total_errors) / sqrt(length(total_errors));
@@ -53,7 +53,11 @@ fprintf('    90%% CI    : %7.5f\n', total_CI);
 %hold off;
 
 figure(4);
+clf reset
+hold on
 errorbar(w, mean_error, error_bars, 'X');
+plot(w, median_error, 'or');
+hold off
 xlabel('Frequency (radians per second)');
 ylabel('Error in predicted cart values');
 

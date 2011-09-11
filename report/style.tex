@@ -1,0 +1,20 @@
+\setlength{\parskip}{0.1in}
+\setlength{\parindent}{0in}
+\newcommand{\helv}{\fontfamily{pag}\fontseries{b}\fontsize{9}{11}\selectfont}
+
+\newcommand*{\sectionpostamble}{}
+\newcommand*{\subheading}[1]{%
+  \def\sectionpostamble{\vspace{-2\parskip}#1}%
+}
+
+\titleformat{\section} {\normalfont\LARGE\scshape} {\thesubsection} {1em} {}
+  [
+    \normalfont\scriptsize\scshape\raggedleft\sectionpostamble
+    \global\let\sectionpostamble\relax
+  ]
+
+\titleformat{\subsection} {\normalfont\Large\scshape} {\thesubsection} {1em} {}
+  [
+    \normalfont\scriptsize\scshape\raggedleft\sectionpostamble
+    \global\let\sectionpostamble\relax
+  ]

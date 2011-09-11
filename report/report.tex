@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt, titlepage]{article}
+\documentclass[a4paper, 11pt, titlepage]{article}
 \usepackage[top=1in,right=1in,left=1in,bottom=1in]{geometry}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
@@ -6,26 +6,9 @@
 \usepackage{amsmath}
 \usepackage[T1]{fontenc}
 \usepackage{tgbonum}
-
-\setlength{\parskip}{0.1in}
-\setlength{\parindent}{0in}
-\newcommand{\helv}{\fontfamily{pag}\fontseries{b}\fontsize{9}{11}\selectfont}
-
-\newcommand*{\sectionpostamble}{}
-\newcommand*{\subheading}[1]{%
-  \def\sectionpostamble{#1}%
-}
-
 \usepackage{titlesec}
-\titleformat{\section}
-  {\normalfont\Large\scshape}
-  {\thesection}
-  {1em}
-  {}
-  [
-    \normalfont\small\scshape\raggedleft\sectionpostamble
-    \global\let\sectionpostamble\relax
-  ]
+
+\input{style}
 
 \begin{document}
   \input{title}
@@ -35,8 +18,8 @@
   \cfoot[]{}
   \pagestyle{fancy}
 
-  \input{section-one}
-  \input{section-two}
+  \input{introduction}
+  \input{section-one-and-two}
   \input{section-three}
   \input{section-four}
   \input{section-five}
