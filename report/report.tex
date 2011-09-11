@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt, titlepage]{article}
+\documentclass[a4paper, 12pt, titlepage]{article}
 \usepackage[top=1in,right=1in,left=1in,bottom=1in]{geometry}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
@@ -10,13 +10,25 @@
 
 \input{style}
 
+\lhead[\helv \leftmark]{\helv \leftmark}
+\rhead[\helv \thepage]{\helv \thepage}
+\cfoot[]{}
+
+\newcommand{\includefigure}[3]{
+  \begin{figure}
+  \centering
+  \includegraphics[#1]{#2}
+  \caption{#3}
+  \end{figure}
+}
+
 \begin{document}
+  \pagestyle{empty}
+  \pagenumbering{roman}
   \input{title}
 
-  \lhead[\helv \leftmark]{\helv \leftmark}
-  \rhead[\helv \thepage]{\helv \thepage}
-  \cfoot[]{}
   \pagestyle{fancy}
+  \pagenumbering{arabic}
 
   \input{introduction}
   \input{section-one-and-two}

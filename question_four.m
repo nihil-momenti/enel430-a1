@@ -6,6 +6,7 @@ clear;
 % Init
 f = [0.6 : 0.2 : 2.8]';
 w = 2 * pi * f;
+num = 0;
 
 for i = 1:12
   S = load(['freq' int2str(i) '_data']);
@@ -26,7 +27,7 @@ for i = 1:12
   scaled_errors{i} = abs(y_m{i} - y{i}) / mean(abs(y{i}));
   mean_error(i) = mean(scaled_errors{i});
   median_error(i) = median(scaled_errors{i});
-  error_bars(i) = 1.65 * std(scaled_errors{i}) / sqrt(2 * max(t{i}) * f(i));
+  error_bars(i) = 1.65 * std(scaled_errors{i}) / sqrt(1);
 end
 
 total_errors = [scaled_errors{1};  scaled_errors{2};  scaled_errors{3};
@@ -35,7 +36,8 @@ total_errors = [scaled_errors{1};  scaled_errors{2};  scaled_errors{3};
                 scaled_errors{10}; scaled_errors{11}; scaled_errors{12};];
 
 total_mean_error = mean(total_errors);
-total_CI = 1.65 * std(total_errors) / sqrt(length(total_errors));
+total_median_error = median(total_errors);
+total_CI = 1.65 * std(total_errors) / sqrt(1);
 
 % Output
 
@@ -46,7 +48,7 @@ table = [f, median_error', error_bars'];
 fprintf('Question Four:\n');
 print_table(headings, formats, table);
 fprintf(' Totals:\n')
-fprintf('    Mean Error: %7.5f\n', total_mean_error);
+fprintf('    Median Error: %7.5f\n', total_median_error);
 fprintf('    90%% CI    : %7.5f\n', total_CI);
 
 %figure(4);

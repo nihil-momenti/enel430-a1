@@ -1,27 +1,27 @@
 \subheading{Wherein A Function To\\ Identify the System is Written}
 \section*{Section Three (a)}
 
-Now that a test function has been developed we can work on the identification
-function.  This is simply creating a function that matches equation \ref{lls}.
-It takes in the $y$ vector, $t$ vector and $\omega$ frequency and produces the
-corresponding $A_1$ and $A_2$.  From these the $b$ and $C$ values can be derived
-as equation \ref{a-to-bc} shows.
+After writing this test function the actual identification function could be
+developed.  This involved simply creating a function that matched equation
+\ref{lls}, the function takes in the $y$ vector, $t$ vector and $\omega$
+frequency and produces the corresponding $A_1$ and $A_2$.  From these two values
+the $b$ and $C$ values were able to be derived as equation \ref{a-to-bc} shows.
 
 \subheading{Wherein The Identification\\ Function is Tested}
 \section*{Section Three (b)}
 
 To check the identification function a series of ``noisy'' sample data streams
-are created and run through the function.  These are based off the test function
+were created and run through the function.  These were based off the test function
 developed earlier with each $y$ datum multiplied by a normally distributed
 value.  The value used had a mean of $1$ and a standard deviation varied between
-$0$ and $0.4$ in steps of $0.05$.  Each of these standard deviations is
-simulated 100 times and the median and confidence intervals of the series is
+$0$ and $0.4$ in steps of $0.05$.  Each of these standard deviations was
+simulated 100 times and the median and confidence intervals of the series was
 calculated.
 
 Table \ref{3b} and Figure \ref{3b-fig} show the median and confidence interval
 calculated using the test function with $C = 5$, $\beta = 1$, $K_p = 60$, $f =
-1.8$, $t_\text{end} = 1$ and a varying standard deviation.  From these we can
-see that the identification of the $C$ and $\beta$ values are quite accurate,
+1.8$, $t_\text{end} = 1$ and a varying standard deviation.  From these it was
+seen that the identification of the $C$ and $\beta$ values are quite accurate,
 the 90\% confidence interval is less than 0.3\% of the found value and the
 difference from the correct value is less than 0.2\% in the worst case.
 
@@ -43,8 +43,6 @@ Noise Level & Median (C) & 90\% CI (C) & Median (b) & 90\% CI (b) \\
 \caption{Testing the Identification Function\label{3b}}
 \end{table}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{images/section-3b}
-\caption{Testing the Identification Function\label{3b-fig}}
-\end{figure}
+\includefigure{width=0.8\textwidth}
+              {images/section-3b}
+              {Testing the Identification Function\label{3b-fig}}
