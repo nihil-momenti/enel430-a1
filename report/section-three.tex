@@ -2,10 +2,11 @@
 \section*{Section Three (a)}
 
 After writing this test function the actual identification function could be
-developed.  This involved simply creating a function that matched equation
-\ref{lls}, the function takes in the $y$ vector, $t$ vector and $\omega$
+developed.  This involved simply creating a function that matched Equation
+\eqref{lls}, the function takes in the $y$ vector, $t$ vector and $\omega$
 frequency and produces the corresponding $A_1$ and $A_2$.  From these two values
-the $b$ and $C$ values were able to be derived as equation \ref{a-to-bc} shows.
+the $b$ and $C$ values were able to be derived as Equation \eqref{a-to-bc}
+showed.
 
 \subheading{Wherein The Identification\\ Function is Tested}
 \section*{Section Three (b)}
@@ -40,11 +41,11 @@ difference from the correct value is less than 0.2\% in the worst case.
   0.35 & 4.99939 & 0.01295 & 0.99886 & 0.00125 \\
   0.40 & 5.00423 & 0.01503 & 0.99959 & 0.00162  
   \end{tabular}
+  \caption{Testing the Identification Function\label{3b}}
 \end{table}
+
 \begin{figure}
-  \begin{minipage}{0.5\linewidth}
-    \centering
-    \includegraphics[width=\textwidth]{images/section-3b}
-  \end{minipage}
+  \centering
+  \includegraphics[width=0.6\textwidth]{images/section-3b}
   \caption{Testing the Identification Function\label{3b-fig}}
 \end{figure}

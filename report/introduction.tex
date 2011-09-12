@@ -1,6 +1,9 @@
 \subheading{Wherein the Aims and Concepts\\ of the Report are Introduced}
 \section*{Introduction}
 
+\newcommand{\lesspace}{\vspace{-8pt}}
+\newcommand{\lessspace}{\vspace{-20pt}}
+
 The aim of this report is to detail the derivation and testing of a model of a
 simple cart system via a linear least squares based system identification.  The
 cart system to be identified is a simple system involving a cart driven by a
@@ -13,28 +16,46 @@ damping term $\left(\overline{C}\right)$; along with the normal Newton's second
 law of motion for the acceleration.  This results in a pair of equations
 describing the system:
 
+\lessspace
+
 \begin{equation}
-F\left(t\right) = \bar\beta V - \bar{C} \dot{y} \qquad M_C \, \ddot{y} = F\left(t\right)
-\end{equation}.
+F\left(t\right) = \bar\beta V - \bar{C} \dot{y} \, , \qquad M_C \, \ddot{y} = F\left(t\right)
+\end{equation}
 
 By rearranging and simplifying these equations we can get a single second order
 equation describing the system:
 
-\begin{equation}
-\ddot{y} = \beta V - C \dot{y}
-\end{equation}, 
+\lesspace
 
-where $\beta = \frac{\bar\beta}{M_C}$ and $C = \frac{\bar{C}}{M_C}$.
+\begin{equation}
+\ddot{y} = \beta V - C \dot{y} \, , \qquad  \beta = \frac{\bar\beta}{M_C} \, , \qquad C = \frac{\bar{C}}{M_C}
+\end{equation}
+
+This can also be Laplace transformed into a transfer function:
+
+\lesspace
+
+\begin{equation}\label{transfer-function}
+G\left(s\right) = \frac{Y\left(s\right)}{R\left(s\right)} = \frac{\beta K_p}{s^2
++ C s + \beta K_p}
+\end{equation}
 
 The controller used on the system was a proportional controller with an input
-signal of $r\left(t\right) = 0.06 \sin\left(\omega t\right)$.  This gives an
-overall system of:
+signal of: 
+
+\lessspace
+
+\begin{equation}\label{proportional-controller}
+r\left(t\right) = 0.06 \sin\left(\omega t\right)
+\end{equation}
+
+This gives an overall system of:
+
+\lesspace
 
 \begin{equation}
-\ddot{y} + C \dot{y} + \beta K_p y = \beta K_p r\left(t\right)
-\end{equation}, 
-
-where $K_p = 60$.
+\ddot{y} + C \dot{y} + \beta K_p y = \beta K_p r\left(t\right) \, , \qquad K_p = 60
+\end{equation}
 
 A frequency response experiment for this system was run for a range of 12
 frequencies, 0.6--2.8 Hz with a step of 0.2.
@@ -42,18 +63,73 @@ frequencies, 0.6--2.8 Hz with a step of 0.2.
 By re-writing the system with $K = \beta K_p$ and $\bar{K} = 0.06 \beta K_p$ the
 analytical solution was found to be:
 
-\begin{equation}
+\lessspace
+
+\begin{equation}\label{y_model}
 y_\text{model} = A_1 \cos\left(\omega t\right) + A_2 \sin\left(\omega t\right)
-\end{equation}, 
+\end{equation}
 
 where, 
 
-\begin{equation}
+\lessspace
+
+\begin{equation}\label{a1}
 A_1 = - \frac{\bar{K} C \omega}{C^2 \omega^2 + \omega^4 - 2 \omega^2 K + K^2}
-\end{equation},
+\end{equation}
 
 and,
 
-\begin{equation}
+\lessspace
+
+\begin{equation}\label{a2}
 A_2 = \frac{\bar{K} \left(\omega^2 - K\right)}{C^2 \omega^2 + \omega^4 - 2 \omega^2 K + K^2}
+\end{equation}
+
+The system identification method used was linear least squares.  This is simply
+minimizing the function:
+
+\lesspace
+
+\begin{equation}
+\varepsilon_\text{error} = \sum^{n}_{i = 1} \left(
+y_\text{model}\left(t_i\right)-y_i\right)^2 = \sum^{n}_{i = 1} \left( A_1
+\cos\left(\omega t\right) + A_2 \sin\left(\omega t\right) - y_i\right)^2
+\end{equation}
+
+This is at a minimum when $\frac{\delta \varepsilon_\text{error}}{\delta A_1} =
+0$ and $\frac{\delta \varepsilon_\text{error}}{\delta A_2} = 0$.  Solving this
+gives:
+
+\lesspace
+
+\begin{equation}\label{lls}
+\left(\begin{array}{c}A_1\\A_2\end{array}\right) = \left(M^T M\right)^{-1} M^T b
+\end{equation}
+
+where:
+
+\lessspace
+
+\begin{equation}
+  M = \left(
+    \begin{array}{cc}
+      \cos\left(\omega t_1\right) & \sin\left(\omega t_1\right) \\
+      \vdots & \vdots \\
+      \cos\left(\omega t_n\right) & \sin\left(\omega t_n\right)
+    \end{array}
+  \right)
+  \, ,\qquad
+  b = \left(\begin{array}{c}y_1\\\vdots\\y_n\end{array}\right)
+\end{equation}
+
+This allows the $A_1$ and $A_2$ values to be calculated, there still needs to be
+a way to convert these into the $C$ and $\beta$ values.  By re-arranging
+Equations \eqref{a1} and \eqref{a2} we get:
+
+\lesspace
+
+\begin{equation}\label{a-to-bc}
+\beta = \frac{\omega^2 \left(A_1^2 + A_2^2\right)}{K_p \left(A_1^2+A_2^2\right)
+- 0.06 K_p A_2}\, , \qquad
+C = - \frac{00.06 \beta K_p A_1}{\omega \left(A_1^2 + A_2^2\right)}
 \end{equation}

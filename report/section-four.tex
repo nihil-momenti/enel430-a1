@@ -1,4 +1,4 @@
-\subheading{Wherein the Cart System is Identified}
+\subheading{Wherein the Cart System\\ is Identified}
 \section*{Section Four (a)}
 
 Now that the function to identify the system had been developed, tested and
@@ -10,7 +10,7 @@ from the seventh data set with a frequency of 1.8 Hz was used as the general
 model.  The results of this identification were a $C$ value of $5.83523$ and a
 $\beta$ vale of $1.93596$.
 
-\subheading{Wherein the Identification is Ridiculed}
+\subheading{Wherein the Identification\\ is Ridiculed}
 \section*{Section Four (b)}
 
 To check the results of the identification the model was used to generate data
@@ -20,13 +20,13 @@ between the generated data and the measured data for each frequency, scaling
 this difference by the mean of the absolute measured data for that frequency and
 finally finding the median and 90\% confidence interval of the relative error.
 
-Figure \ref{4b-fig} and Table \ref{4b} shows these medians and the 90\%
-confidence interval found.  Obviously the model is most accurate at the
-frequency it was derived from, the relative error is down to 0--6\% showing the
-very good accuracy.  The worst case is at $f = 2.6$, $\omega = 16.3$ with a 90\% CI of the
-error in the range 0--63\%, this is obviously an unacceptable level of error so
-the model is really only valid for the one frequency it was derived for, and
-maybe the ones either side depending on the use case.
+Figure and Table \ref{4b} shows these medians and the 90\% confidence interval
+found.  Obviously the model is most accurate at the frequency it was derived
+from, the relative error is down to 0--6\% showing the very good accuracy.  The
+worst case is at $f = 2.6$, $\omega = 16.3$ with a 90\% CI of the error in the
+range 0--63\%, this is obviously an unacceptable level of error so the model is
+really only valid for the one frequency it was derived for, and maybe the ones
+either side depending on the use case.
 
 The relative errors from each frequency were then concatenated and the median
 and 90\% CI of the overall error was calculated.  This came out to a median
@@ -38,8 +38,10 @@ majority of use cases of this model.
 Figure \ref{4b-2-fig} shows a histogram of the error values.  Looking at this
 the bell shape of a Gaussian distribution can be easily seen.
 
-\begin{table}
-    \centering
+\begin{figure}
+  \centering
+  \begin{minipage}{0.4\textwidth}
+    \centering\scriptsize
     \begin{tabular}{c|c|c}
         Frequency & Relative Median error & 90\% CI \\
         \hline
@@ -56,13 +58,15 @@ the bell shape of a Gaussian distribution can be easily seen.
         2.6 & 0.28859 & 0.32453 \\
         2.8 & 0.28994 & 0.28366 
     \end{tabular}
-    \caption{Error in the derived model\label{4b}}
-\end{table}
+  \end{minipage}
+  \hspace{0.1\textwidth}
+  \begin{minipage}{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/section-4b}
+  \end{minipage}
+  \caption{Error in the derived model\label{4b}}
+\end{figure}
 
-\includefigure{width=0.8\textwidth}
-              {images/section-4b}
-              {Error in the derived model\label{4b-fig}}
-
-\includefigure{width=0.8\textwidth}
+\includefigure{width=0.6\textwidth}
               {images/section-4b-2}
-              {\label{4b-2-fig}}
+              {Histogram of the error values\label{4b-2-fig}}
