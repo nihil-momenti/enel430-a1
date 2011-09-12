@@ -1,4 +1,27 @@
 \subheading{Wherein the Aims and Concepts\\ of the Report are Introduced}
 \section*{Introduction}
 
-Blah blah blah
+The aim of this report is to detail the derivation and testing of a model of a
+simple cart system via a linear least squares based system identification.  The
+cart system to be identified is a simple system involving a cart driven by a
+voltage $V$.  
+
+To simplify the system the overall force on the cart is modeled as a
+proportional constant $\left(\overline\beta\right)$ relating the voltage to the
+force provided by the DC motor and gears along with a simple second order
+damping term $\left(\overline{C}\right)$; along with the normal Newton's second
+law of motion for the acceleration.  This results in a pair of equations
+describing the system:
+
+\begin{equation}
+F\left(t\right) = \bar\beta V - \bar{C} \dot{y} \qquad M_C \, \ddot{y} = F\left(t\right)
+\end{equation}
+
+By rearranging and simplifying these equations we can get a single second order
+equation describing the system:
+
+\begin{equation}
+\ddot{y} = \beta V - C \dot{y}
+\end{equation}
+
+where $\beta = \frac{\bar\beta}{M_C}$ and $C = \frac{\bar{C}}{M_C}$.
