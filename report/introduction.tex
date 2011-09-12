@@ -15,13 +15,45 @@ describing the system:
 
 \begin{equation}
 F\left(t\right) = \bar\beta V - \bar{C} \dot{y} \qquad M_C \, \ddot{y} = F\left(t\right)
-\end{equation}
+\end{equation}.
 
 By rearranging and simplifying these equations we can get a single second order
 equation describing the system:
 
 \begin{equation}
 \ddot{y} = \beta V - C \dot{y}
-\end{equation}
+\end{equation}, 
 
 where $\beta = \frac{\bar\beta}{M_C}$ and $C = \frac{\bar{C}}{M_C}$.
+
+The controller used on the system was a proportional controller with an input
+signal of $r\left(t\right) = 0.06 \sin\left(\omega t\right)$.  This gives an
+overall system of:
+
+\begin{equation}
+\ddot{y} + C \dot{y} + \beta K_p y = \beta K_p r\left(t\right)
+\end{equation}, 
+
+where $K_p = 60$.
+
+A frequency response experiment for this system was run for a range of 12
+frequencies, 0.6--2.8 Hz with a step of 0.2.
+
+By re-writing the system with $K = \beta K_p$ and $\bar{K} = 0.06 \beta K_p$ the
+analytical solution was found to be:
+
+\begin{equation}
+y_\text{model} = A_1 \cos\left(\omega t\right) + A_2 \sin\left(\omega t\right)
+\end{equation}, 
+
+where, 
+
+\begin{equation}
+A_1 = - \frac{\bar{K} C \omega}{C^2 \omega^2 + \omega^4 - 2 \omega^2 K + K^2}
+\end{equation},
+
+and,
+
+\begin{equation}
+A_2 = \frac{\bar{K} \left(\omega^2 - K\right)}{C^2 \omega^2 + \omega^4 - 2 \omega^2 K + K^2}
+\end{equation}
